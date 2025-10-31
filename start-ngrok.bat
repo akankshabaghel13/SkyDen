@@ -1,0 +1,3 @@
+@echo off
+echo Starting ngrok tunnel on port 8080...
+start "" ngrok http 8080
