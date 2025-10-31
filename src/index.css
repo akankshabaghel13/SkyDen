@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+*{
+    font-family: 'Urbanist', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+    font-family: 'Urbanist', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+    font-family: 'Urbanist', sans-serif;
+}
+
+@layer base {
+    body {
+        background-color: #EDEDED; /* Light mode background */
+        overflow-y: hidden;
+        color: #1F1B24; /* Default text dark */
+    }
+}
+
+/* Input Box */
+.input-box {
+    @apply w-full flex justify-between gap-3 text-sm text-gray-800 bg-gray-50 rounded px-4 py-3 mb-4 mt-3 border border-gray-200 outline-none;
+}
+
+/* Primary Button */
+.btn-primary {
+    @apply w-full text-sm font-medium text-white bg-[#0FD9B8] shadow-lg shadow-[#0FD9B8]/20 p-[10px] rounded-md my-1
+    hover:bg-[#1AAE9E] hover:shadow-[#0FD9B8]/40 transition-all duration-200;
+}
+
+/* Card */
+.card {
+    @apply bg-[#FDFCFD] p-6 rounded-2xl shadow-lg shadow-[#B5B3BA]/10 border border-[#B5B3BA]/10;
+}
+
+/* Landing Page */
+.landing-page {
+    @apply overflow-y-auto h-screen bg-[#14121A]; /* Dark mode bg */
+}
+
+.landing-page-content {
+    @apply overflow-visible;
+}
+
+/* Card Button */
+.card-btn {
+    @apply flex items-center gap-3 text-[12px] font-medium text-[#B5B3BA] hover:text-[#0FD9B8]
+    bg-[#1F1B24] hover:bg-[#14121A] px-4 py-1.5 rounded-lg border border-[#B5B3BA]/30 cursor-pointer transition-all duration-150;
+}
+
+/* Add Button */
+.add-btn {
+    @apply flex items-center gap-1.5 text-xs md:text-sm font-medium text-[#0FD9B8] whitespace-nowrap
+    bg-[#1F1B24] border border-[#0FD9B8]/30 rounded-lg px-4 py-2 cursor-pointer hover:bg-[#0FD9B8] hover:text-[#14121A] transition-all duration-200;
+}
+
+/* Add Button Filled */
+.add-btn-fill {
+    @apply text-white bg-[#FF6A3D] hover:bg-[#E65528] transition-all duration-200; /* Accent 1 */
+}
