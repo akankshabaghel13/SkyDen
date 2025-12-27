@@ -2,6 +2,7 @@ package in.akankshasingh.skydenapi.security;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import in.akankshasingh.skydenapi.service.ProfileService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
@@ -21,15 +22,21 @@ import java.security.PublicKey;
 import java.util.Base64;
 import java.util.Collections;
 
+
+
 @Component
 @RequiredArgsConstructor
 public class ClerkJwtAuthFilter extends OncePerRequestFilter {
+
+
+
+
 
     @Value("${clerk.issuer}")
     private String clerkIssuer;
 
     private final ClerkJwksProvider jwksProvider;
-
+    private final ProfileService profileService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -81,6 +88,8 @@ public class ClerkJwtAuthFilter extends OncePerRequestFilter {
                     .getBody();
 
             String clerkId = claims.getSubject();
+
+            profileService.getOrCreateProfile(clerkId);
 
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(clerkId, null, Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")));
 

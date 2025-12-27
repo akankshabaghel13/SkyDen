@@ -22,6 +22,7 @@ public class ProfileService {
         if (profileRepository.existsByClerkId(profileDTO.getClerkId())) {
             return updateProfile(profileDTO);
         }
+        
 
         ProfileDocument profile = ProfileDocument.builder()
                 .clerkId(profileDTO.getClerkId())
@@ -29,7 +30,7 @@ public class ProfileService {
                 .firstName(profileDTO.getFirstName())
                 .lastName(profileDTO.getLastName())
                 .photoUrl(profileDTO.getPhotoUrl())
-                .credits(5)
+                .credits(20)
                 .createdAt(Instant.now())
                 .build();
 
@@ -47,6 +48,22 @@ public class ProfileService {
                 .build();
 
     }
+    public ProfileDocument getOrCreateProfile(String clerkId) {
+
+        ProfileDocument profile = profileRepository.findByClerkId(clerkId);
+
+        if (profile != null) {
+            return profile;
+        }
+
+        ProfileDocument newProfile = ProfileDocument.builder()
+                .clerkId(clerkId)
+                .credits(20)
+                .createdAt(Instant.now())
+                .build();
+        return profileRepository.save(newProfile);
+    }
+
 
     public ProfileDTO updateProfile(ProfileDTO profileDTO) {
         ProfileDocument existingProfile = profileRepository.findByClerkId(profileDTO.getClerkId());
